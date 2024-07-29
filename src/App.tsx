@@ -1,4 +1,4 @@
-import Cart from "./components/Card";
+import Cart from "./components/Cart";
 import Card from "./components/Card";
 
 function App() {
