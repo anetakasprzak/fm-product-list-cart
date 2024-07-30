@@ -4,7 +4,7 @@ import Card from "./components/Card";
 function App() {
   return (
     <div>
-      <h1 className="text-red-500">Deserts</h1>
+      <h1 className="text-red-500">Desserts</h1>
       <div>
         <Card />
         <Cart />
