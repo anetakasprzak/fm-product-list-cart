@@ -8,6 +8,12 @@ function Cart() {
         />
         <p>Add to cart</p>
       </button>
+
+      <div>
+        <p>Waffle</p>
+        <p>Waffle with Berries</p>
+        <span>$6.50</span>
+      </div>
     </div>
   );
 }
