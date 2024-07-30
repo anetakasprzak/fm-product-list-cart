@@ -9,7 +9,7 @@ function Cart() {
         <p>Add to cart</p>
       </button>
 
-      <div className="text-[1.6rem]">
+      <div>
         <p className="text-[1.4rem] font-normal text-[#87635A]">Waffle</p>
         <p className="">Waffle with Berries</p>
         <span className="text-[#C73B0F]">$6.50</span>
