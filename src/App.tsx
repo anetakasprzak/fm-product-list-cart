@@ -8,7 +8,7 @@ function App() {
       <h1 className="text-red-500">Desserts</h1>
       <div>
         {fakeData?.map((item) => (
-          <Card name={item.name} key={item.name} />
+          <Card key={item.name} item={item} />
         ))}
 
         <Cart />
