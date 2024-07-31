@@ -6,13 +6,9 @@ export default {
       xl: { max: "90em" },
       lg: { max: "68.75em" },
       md: { max: "47.8em" },
-      sm: { max: "23.4em" },
+      sm: { max: "30em" },
     },
     extend: {},
   },
   plugins: [],
 };
-
-// module.exports = {
-//   theme: {},
-// };

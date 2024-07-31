@@ -17,9 +17,9 @@ function Card({ item }: CardProps) {
 
   return (
     <div>
-      <div className="w-[25rem]">
+      <div className="lg:w-[25rem] md:w-[21.3rem] sm:w-[32.7rem]">
         <picture>
-          <source srcSet={image.mobile} media="(max-width: 23.4em)" />
+          <source srcSet={image.mobile} media="(max-width: 30em)" />
           <source srcSet={image.tablet} media="(max-width: 47.8em)" />
           <source srcSet={image.desktop} media="(max-width: 90em)" />
           <img src={image.desktop} alt="image" />
