@@ -37,7 +37,7 @@ function Card({ item }: CardProps) {
       <div>
         <p className="text-[1.4rem] font-normal text-[#87635A]">{category}</p>
         <p>{name}</p>
-        <span className="text-[#C73B0F]">£{price}</span>
+        <span className="text-[#C73B0F]">£{price.toFixed(2)}</span>
       </div>
     </div>
   );
