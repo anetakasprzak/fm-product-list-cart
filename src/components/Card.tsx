@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface CardProps {
   item: {
     image: {
@@ -14,6 +16,7 @@ interface CardProps {
 
 function Card({ item }: CardProps) {
   const { name, category, price, image } = item || {};
+  const [isClicked, setIsClicked] = useState(false);
 
   return (
     <div>
@@ -29,13 +32,22 @@ function Card({ item }: CardProps) {
           />
         </picture>
 
-        <button className="w-[16rem] h-[4.4rem] text-[1.4rem] flex items-center justify-center gap-2 bg-white border border-[#87635A] rounded-full hover:text-[#C73B0F] hover:border-[#C73B0F] transition-all duration-200 absolute top-[90%] left-[50%] translate-x-[-50%]">
-          <img
-            src="../../public/assets/images/icon-add-to-cart.svg"
-            alt="add to cart icon"
-          />
-          <p>Add to cart</p>
-        </button>
+        <div onClick={() => setIsClicked(true)}>
+          {!isClicked && (
+            <button className="w-[16rem] h-[4.4rem] text-[1.4rem] flex items-center justify-center gap-2 bg-white border border-[#87635A] rounded-full hover:text-[#C73B0F] hover:border-[#C73B0F] transition-all duration-200 absolute top-[90%] left-[50%] translate-x-[-50%]">
+              <img
+                src="../../public/assets/images/icon-add-to-cart.svg"
+                alt="add to cart icon"
+              />
+              <p>Add to cart</p>
+            </button>
+          )}
+          {isClicked && (
+            <div className="w-[16rem] h-[4.4rem] text-[1.4rem]">
+              <p>CLICKED</p>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="mt-[3.6rem]">
