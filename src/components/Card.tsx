@@ -17,7 +17,7 @@ interface CardProps {
 function Card({ item }: CardProps) {
   const { name, category, price, image } = item || {};
   const [isClicked, setIsClicked] = useState(false);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
 
   const decrease = () => {
     if (count === 0) return;

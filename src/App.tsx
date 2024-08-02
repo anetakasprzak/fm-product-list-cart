@@ -4,12 +4,12 @@ import { fakeData } from "./data";
 
 function App() {
   return (
-    <div className="bg-[#FCF8F6]">
+    <div className="bg-[#FCF8F6] p-[88px]">
       <h1 className="text-[#260F08] font-[700] text-[4rem] mb-[3.2rem]">
         Desserts
       </h1>
       <div className="flex">
-        <div className="flex-auto">
+        <div className="flex gap-x-[24px] flex-wrap flex-auto">
           {fakeData?.map((item) => (
             <Card key={item.name} item={item} />
           ))}
