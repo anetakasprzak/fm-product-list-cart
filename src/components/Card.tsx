@@ -16,7 +16,16 @@ interface CardProps {
 
 function Card({ item }: CardProps) {
   const { name, category, price, image } = item || {};
-  const [isClicked, setIsClicked] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
+  const [count, setCount] = useState(1);
+
+  const decrease = () => {
+    setCount((count) => count - 1);
+  };
+
+  const increase = () => {
+    setCount((count) => count + 1);
+  };
 
   return (
     <div>
@@ -44,7 +53,10 @@ function Card({ item }: CardProps) {
           )}
           {isClicked && (
             <div className="w-[16rem] h-[4.4rem]  bg-[#C73B0F] rounded-full absolute top-[90%] left-[50%] translate-x-[-50%] flex items-center justify-center gap-12">
-              <button className="border border-white py-[1rem] px-[0.6rem] rounded-full">
+              <button
+                onClick={decrease}
+                className="border border-white py-[1rem] px-[0.6rem] rounded-full"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="10"
@@ -59,9 +71,12 @@ function Card({ item }: CardProps) {
                 </svg>
               </button>
 
-              <span className="text-white text-[1.4rem]">1</span>
+              <span className="text-white text-[1.4rem]">{count}</span>
 
-              <button className="border border-white py-[0.6rem] px-[0.6rem] rounded-full">
+              <button
+                onClick={increase}
+                className="border border-white py-[0.6rem] px-[0.6rem] rounded-full"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="10"
