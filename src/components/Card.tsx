@@ -20,6 +20,7 @@ function Card({ item }: CardProps) {
   const [count, setCount] = useState(1);
 
   const decrease = () => {
+    if (count === 0) return;
     setCount((count) => count - 1);
   };
 
