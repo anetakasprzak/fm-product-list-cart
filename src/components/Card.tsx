@@ -16,7 +16,6 @@ interface CardProps {
 
 function Card({ item }: CardProps) {
   const { name, category, price, image } = item || {};
-  const [isClicked, setIsClicked] = useState(false);
   const [quantity, setQuantity] = useState(0);
 
   const decrease = () => {
@@ -42,9 +41,12 @@ function Card({ item }: CardProps) {
           />
         </picture>
 
-        <div onClick={() => setIsClicked(true)}>
-          {!isClicked && (
-            <button className="w-[16rem] h-[4.4rem] text-[1.4rem] flex items-center justify-center gap-2 bg-white border border-[#87635A] rounded-full hover:text-[#C73B0F] hover:border-[#C73B0F] transition-all duration-200 absolute top-[90%] left-[50%] translate-x-[-50%]">
+        <div>
+          {quantity === 0 && (
+            <button
+              className="w-[16rem] h-[4.4rem] text-[1.4rem] flex items-center justify-center gap-2 bg-white border border-[#87635A] rounded-full hover:text-[#C73B0F] hover:border-[#C73B0F] transition-all duration-200 absolute top-[90%] left-[50%] translate-x-[-50%]"
+              onClick={increase}
+            >
               <img
                 src="../../public/assets/images/icon-add-to-cart.svg"
                 alt="add to cart icon"
@@ -52,7 +54,7 @@ function Card({ item }: CardProps) {
               <p>Add to cart</p>
             </button>
           )}
-          {isClicked && (
+          {quantity >= 1 && (
             <div className="w-[16rem] h-[4.4rem]  bg-[#C73B0F] rounded-full absolute top-[90%] left-[50%] translate-x-[-50%] flex items-center justify-center gap-12">
               <button
                 onClick={decrease}
