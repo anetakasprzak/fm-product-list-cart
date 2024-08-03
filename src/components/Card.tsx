@@ -17,15 +17,15 @@ interface CardProps {
 function Card({ item }: CardProps) {
   const { name, category, price, image } = item || {};
   const [isClicked, setIsClicked] = useState(false);
-  const [count, setCount] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
   const decrease = () => {
-    if (count === 0) return;
-    setCount((count) => count - 1);
+    if (quantity === 0) return;
+    setQuantity((quantity) => quantity - 1);
   };
 
   const increase = () => {
-    setCount((count) => count + 1);
+    setQuantity((quantity) => quantity + 1);
   };
 
   return (
@@ -72,7 +72,7 @@ function Card({ item }: CardProps) {
                 </svg>
               </button>
 
-              <span className="text-white text-[1.4rem]">{count}</span>
+              <span className="text-white text-[1.4rem]">{quantity}</span>
 
               <button
                 onClick={increase}
