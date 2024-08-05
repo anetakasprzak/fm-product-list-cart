@@ -10,5 +10,8 @@ export default {
     },
     extend: {},
   },
+  variants: {
+    fill: ["hover", "focus"],
+  },
   plugins: [],
 };

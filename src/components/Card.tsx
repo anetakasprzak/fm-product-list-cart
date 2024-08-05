@@ -55,10 +55,10 @@ function Card({ item }: CardProps) {
             </button>
           )}
           {quantity >= 1 && (
-            <div className="w-[16rem] h-[4.4rem]  bg-[#C73B0F] rounded-full absolute top-[90%] left-[50%] translate-x-[-50%] flex items-center justify-center gap-12">
+            <div className="w-[16rem] h-[4.4rem]  bg-[#C73B0F] rounded-full absolute top-[90%] left-[50%] translate-x-[-50%] flex items-center justify-between px-7">
               <button
                 onClick={decrease}
-                className="border border-white py-[1rem] px-[0.6rem] rounded-full"
+                className="border border-white py-[1rem] px-[0.6rem] rounded-full bg-[#c73b0f] hover:bg-white group transition-all duration-200"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -66,11 +66,9 @@ function Card({ item }: CardProps) {
                   height="2"
                   fill="none"
                   viewBox="0 0 10 2"
+                  className="fill-white group-hover:fill-[#c73b0f]"
                 >
-                  <path
-                    d="M0 .375h10v1.25H0V.375Z"
-                    className="fill-white hover:fill-[#C73B0F]"
-                  />
+                  <path d="M0 .375h10v1.25H0V.375Z" />
                 </svg>
               </button>
 
@@ -78,7 +76,7 @@ function Card({ item }: CardProps) {
 
               <button
                 onClick={increase}
-                className="border border-white py-[0.6rem] px-[0.6rem] rounded-full"
+                className="border border-white py-[0.6rem] px-[0.6rem] rounded-full bg-[#c73b0f] hover:bg-white group transition"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -86,11 +84,9 @@ function Card({ item }: CardProps) {
                   height="10"
                   fill="none"
                   viewBox="0 0 10 10"
+                  className="fill-white group-hover:fill-[#c73b0f]"
                 >
-                  <path
-                    fill="#fff"
-                    d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
-                  />
+                  <path d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z" />
                 </svg>
               </button>
             </div>
