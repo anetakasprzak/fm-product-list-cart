@@ -27,14 +27,29 @@ function EmptyCart() {
 
 function CartList() {
   return (
-    <ul className="flex flex-col gap-5">
-      <li className="border-b-[1px] border-[#F5EEEC)]">
-        <CartItem />
-      </li>
-      <li>
-        <CartItem />
-      </li>
-    </ul>
+    <div>
+      <ul className="flex flex-col gap-5">
+        <li className="border-b-[1px] border-[#F5EEEC)]">
+          <CartItem />
+        </li>
+        <li>
+          <CartItem />
+        </li>
+      </ul>
+
+      <div>
+        <span>Order Total</span>
+        <span>£46.70</span>
+      </div>
+
+      <div>
+        <img src="../../public/assets/images/icon-carbon-neutral.svg" />
+        <p>
+          This is <span>carbon-neutral</span> delivery
+        </p>
+      </div>
+      <button>Confirm Order</button>
+    </div>
   );
 }
 
