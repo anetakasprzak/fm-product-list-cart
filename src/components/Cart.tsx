@@ -23,17 +23,28 @@ function Cart() {
 
 function CartItem() {
   return (
-    <div className="flex">
-      <div className="flex flex-col">
-        <h4>item name</h4>
-        <div>
-          <span>1x</span>
-          <span>@ £7.00</span>
-          <span>£28.00</span>
+    <>
+      <div className="flex justify-between pb-8">
+        <div className="flex flex-col">
+          <h4 className="font-[600] text-[1.4rem] text-[#260F08]">item name</h4>
+          <div className="flex gap-[0.8rem]">
+            <span className="font-[600] text-[1.4rem] text-[#C73B0F]">1x</span>
+            <span className="font-[400] text-[1.4rem] text-[#87635A]">
+              @ £7.00
+            </span>
+            <span className="font-[600] text-[1.4rem] text-[#87635A]">
+              £28.00
+            </span>
+          </div>
         </div>
+        <button className="">
+          <div className="border border-[#87635A] rounded-full p-[0.3rem]">
+            <img src="../../public/assets/images/icon-remove-item.svg" />
+          </div>
+        </button>
       </div>
-      <button>x</button>
-    </div>
+      <span className="h-[1px] w-[100%] bg-[#F5EEEC]"></span>
+    </>
   );
 }
 

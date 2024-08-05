@@ -4,7 +4,7 @@ import { fakeData } from "./data";
 
 function App() {
   return (
-    <div className="bg-[#FCF8F6] p-[88px]">
+    <div className="bg-[#FCF8F6] p-[8.8rem]">
       <div className="flex">
         <div className="flex flex-col">
           <h1 className="text-[#260F08] font-[700] text-[4rem] mb-[3.2rem]">
