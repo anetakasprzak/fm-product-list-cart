@@ -4,9 +4,9 @@ export default {
   theme: {
     screens: {
       xl: { max: "90em" },
-      lg: { max: "68.75em" },
+      lg: { max: "69em" },
       md: { max: "47.8em" },
-      sm: { max: "30em" },
+      xsm: { max: "30em" },
     },
     extend: {},
   },

@@ -1,6 +1,6 @@
 function Cart() {
   return (
-    <div className="flex flex-col shrink-0 w-[38.4rem] h-max bg-white p-[2.4rem] rounded-[1.2rem]">
+    <div className="flex flex-col shrink-0 w-[38.4rem] h-max bg-white p-[2.4rem] rounded-[1.2rem] lg:w-[100%]">
       <h2 className="text-[#C73B0F] font-[700] text-[2.4rem]">Your Cart (0)</h2>
       {/* <EmptyCart /> */}
       <CartList />
