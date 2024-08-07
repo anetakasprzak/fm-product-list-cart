@@ -12,13 +12,15 @@ function App() {
     cartItems.find((item) => item.id === id)?.quantity || 0;
 
   const cartQuantity = cartItems.reduce(
-    (quantity, item) => item.quantity + quantity,
+    (totalQuantity, element) => totalQuantity + element.quantity,
     0
   );
 
   const increaseCartQuantity = (id: number) => {
     return setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id) == null) {
+      const isItemAlreadyInCart = currItems.find((item) => item.id === id);
+
+      if (!isItemAlreadyInCart) {
         return [...currItems, { id, quantity: 1 }];
       } else {
         return currItems.map((item) => {
@@ -34,7 +36,10 @@ function App() {
 
   const decreaseCartQuantity = (id: number) => {
     return setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id)?.quantity === 1) {
+      const isLastItemInCart =
+        currItems.find((item) => item.id === id)?.quantity === 1;
+
+      if (isLastItemInCart) {
         return currItems.filter((item) => item.id !== id);
       } else {
         return currItems.map((item) => {
