@@ -4,9 +4,11 @@ import { fakeData } from "../data";
 function Cart({
   cartItems,
   cartQuantity,
+  removeCartItem,
 }: {
   cartItems: CartItem[];
   cartQuantity: number;
+  removeCartItem: (id: number) => void;
 }) {
   return (
     <div className="flex flex-col shrink-0 w-[38.4rem] h-max bg-white p-[2.4rem] rounded-[1.2rem] lg:w-[100%]">
@@ -14,7 +16,11 @@ function Cart({
         Your Cart ({cartQuantity})
       </h2>
 
-      {!cartItems.length ? <EmptyCart /> : <CartList cartItems={cartItems} />}
+      {!cartItems.length ? (
+        <EmptyCart />
+      ) : (
+        <CartList cartItems={cartItems} removeCartItem={removeCartItem} />
+      )}
     </div>
   );
 }
@@ -34,13 +40,28 @@ function EmptyCart() {
   );
 }
 
-function CartList({ cartItems }: { cartItems: CartItem[] }) {
+function CartList({
+  cartItems,
+  removeCartItem,
+}: {
+  cartItems: CartItem[];
+  removeCartItem: (id: number) => void;
+}) {
+  const totalPrice = cartItems.reduce((total, cartItem) => {
+    const item = fakeData.find((item) => item.id === cartItem.id);
+    return total + (item?.price || 0) * cartItem.quantity;
+  }, 0);
+
   return (
     <div>
       <ul className="flex flex-col">
         {cartItems?.map((item) => (
           <li key={item.id} className="border-b-[1px] border-[#F5EEEC)]">
-            <CartItem id={item.id} quantity={item.quantity} />
+            <CartItem
+              id={item.id}
+              quantity={item.quantity}
+              removeCartItem={removeCartItem}
+            />
           </li>
         ))}
       </ul>
@@ -52,7 +73,7 @@ function CartList({ cartItems }: { cartItems: CartItem[] }) {
             Order Total
           </span>
           <span className="font-[700] text-[2.4rem] text-[#260F08]">
-            £46.70
+            £{totalPrice.toFixed(2)}
           </span>
         </div>
 
@@ -70,7 +91,11 @@ function CartList({ cartItems }: { cartItems: CartItem[] }) {
   );
 }
 
-function CartItem({ id, quantity }: CartItem) {
+function CartItem({
+  id,
+  quantity,
+  removeCartItem,
+}: CartItem & { removeCartItem: (id: number) => void }) {
   const item = fakeData.find((item) => item.id === id);
 
   if (item == null) {
@@ -89,11 +114,11 @@ function CartItem({ id, quantity }: CartItem) {
             @ £{item.price.toFixed(2)}
           </span>
           <span className="font-[600] text-[1.4rem] text-[#87635A]">
-            £28.00
+            £{(item.price * quantity).toFixed(2)}
           </span>
         </div>
       </div>
-      <button className="">
+      <button className="" onClick={() => removeCartItem(id)}>
         <div className="border border-[#87635A] rounded-full p-[0.3rem]">
           <img src="../../public/assets/images/icon-remove-item.svg" />
         </div>

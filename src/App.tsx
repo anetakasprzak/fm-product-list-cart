@@ -48,11 +48,11 @@ function App() {
     });
   };
 
-  // const removeCartItem = (id: number) => {
-  //   return setCartItems((currItems) =>
-  //     currItems.filter((item) => item.id !== id)
-  //   );
-  // };
+  const removeCartItem = (id: number) => {
+    return setCartItems((currItems) =>
+      currItems.filter((item) => item.id !== id)
+    );
+  };
 
   return (
     <div className="bg-[#FCF8F6] p-[8.8rem] lg:py-[7rem] lg:px-[6rem] xsm:py-[5rem] xsm:px-[2rem]">
@@ -73,7 +73,11 @@ function App() {
             ))}
           </div>
         </div>
-        <Cart cartItems={cartItems} cartQuantity={cartQuantity} />
+        <Cart
+          cartItems={cartItems}
+          cartQuantity={cartQuantity}
+          removeCartItem={removeCartItem}
+        />
       </div>
     </div>
   );
