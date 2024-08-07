@@ -1,31 +1,20 @@
-import { useState } from "react";
+import { MenuItem } from "../data";
 
 interface CardProps {
-  item: {
-    image: {
-      thumbnail: string;
-      mobile: string;
-      tablet: string;
-      desktop: string;
-    };
-    name: string;
-    category: string;
-    price: number;
-  };
+  item: MenuItem;
+  getItemQuantity: (id: number) => number;
+  increaseCartQuantity: (id: number) => void;
+  decreaseCartQuantity: (id: number) => void;
 }
 
-function Card({ item }: CardProps) {
+function Card({
+  item,
+  getItemQuantity,
+  increaseCartQuantity,
+  decreaseCartQuantity,
+}: CardProps) {
   const { name, category, price, image } = item || {};
-  const [quantity, setQuantity] = useState(0);
-
-  const decrease = () => {
-    if (quantity === 0) return;
-    setQuantity((quantity) => quantity - 1);
-  };
-
-  const increase = () => {
-    setQuantity((quantity) => quantity + 1);
-  };
+  const quantity = getItemQuantity(item.id);
 
   return (
     <div>
@@ -42,10 +31,10 @@ function Card({ item }: CardProps) {
         </picture>
 
         <div>
-          {quantity === 0 && (
+          {quantity === 0 ? (
             <button
               className="w-[16rem] h-[4.4rem] text-[1.4rem] flex items-center justify-center gap-2 bg-white border border-[#87635A] rounded-full hover:text-[#C73B0F] hover:border-[#C73B0F] transition-all duration-200 absolute top-[90%] left-[50%] translate-x-[-50%]"
-              onClick={increase}
+              onClick={() => increaseCartQuantity(item.id)}
             >
               <img
                 src="../../public/assets/images/icon-add-to-cart.svg"
@@ -53,11 +42,10 @@ function Card({ item }: CardProps) {
               />
               <p>Add to cart</p>
             </button>
-          )}
-          {quantity >= 1 && (
+          ) : (
             <div className="w-[16rem] h-[4.4rem]  bg-[#C73B0F] rounded-full absolute top-[90%] left-[50%] translate-x-[-50%] flex items-center justify-between px-7">
               <button
-                onClick={decrease}
+                onClick={() => decreaseCartQuantity(item.id)}
                 className="border border-white py-[1rem] px-[0.6rem] rounded-full bg-[#c73b0f] hover:bg-white group transition-all duration-200"
               >
                 <svg
@@ -75,7 +63,7 @@ function Card({ item }: CardProps) {
               <span className="text-white text-[1.4rem]">{quantity}</span>
 
               <button
-                onClick={increase}
+                onClick={() => increaseCartQuantity(item.id)}
                 className="border border-white py-[0.6rem] px-[0.6rem] rounded-full bg-[#c73b0f] hover:bg-white group transition"
               >
                 <svg

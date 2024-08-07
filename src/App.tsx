@@ -3,20 +3,56 @@ import Card from "./components/Card";
 import { fakeData } from "./data";
 import { useState } from "react";
 
+export type CartItem = { id: number; quantity: number };
+
 function App() {
-  const [productsInTheCart, setProductsInTheCart] = useState([
-    {
-      image: {
-        thumbnail: "./assets/images/image-waffle-thumbnail.jpg",
-        mobile: "./assets/images/image-waffle-mobile.jpg",
-        tablet: "./assets/images/image-waffle-tablet.jpg",
-        desktop: "./assets/images/image-waffle-desktop.jpg",
-      },
-      name: "Waffle with Berries",
-      category: "Waffle",
-      price: 6.5,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  const getItemQuantity = (id: number) =>
+    cartItems.find((item) => item.id === id)?.quantity || 0;
+
+  const cartQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0
+  );
+
+  const increaseCartQuantity = (id: number) => {
+    return setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === id) == null) {
+        return [...currItems, { id, quantity: 1 }];
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  };
+
+  const decreaseCartQuantity = (id: number) => {
+    return setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === id)?.quantity === 1) {
+        return currItems.filter((item) => item.id !== id);
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  };
+
+  // const removeCartItem = (id: number) => {
+  //   return setCartItems((currItems) =>
+  //     currItems.filter((item) => item.id !== id)
+  //   );
+  // };
 
   return (
     <div className="bg-[#FCF8F6] p-[8.8rem] lg:py-[7rem] lg:px-[6rem] xsm:py-[5rem] xsm:px-[2rem]">
@@ -30,12 +66,14 @@ function App() {
               <Card
                 key={item.name}
                 item={item}
-                setProductsInTheCart={setProductsInTheCart}
+                getItemQuantity={getItemQuantity}
+                increaseCartQuantity={increaseCartQuantity}
+                decreaseCartQuantity={decreaseCartQuantity}
               />
             ))}
           </div>
         </div>
-        <Cart productsInTheCart={productsInTheCart} />
+        <Cart cartItems={cartItems} cartQuantity={cartQuantity} />
       </div>
     </div>
   );
