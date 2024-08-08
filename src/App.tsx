@@ -2,6 +2,7 @@ import Cart from "./components/Cart";
 import Card from "./components/Card";
 import { fakeData } from "./data";
 import { useState } from "react";
+import Modal from "./components/Modal";
 
 export type CartItem = { id: number; quantity: number };
 
@@ -84,6 +85,7 @@ function App() {
           removeCartItem={removeCartItem}
         />
       </div>
+      <Modal />
     </div>
   );
 }
