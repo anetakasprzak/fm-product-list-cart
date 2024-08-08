@@ -6,11 +6,13 @@ function Cart({
   cartQuantity,
   removeCartItem,
   setIsModalOpen,
+  totalPrice,
 }: {
   cartItems: CartItem[];
   cartQuantity: number;
   removeCartItem: (id: number) => void;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  totalPrice: number;
 }) {
   return (
     <div className="flex flex-col shrink-0 w-[38.4rem] h-max bg-white p-[2.4rem] rounded-[1.2rem] lg:w-[100%]">
@@ -22,6 +24,7 @@ function Cart({
         <EmptyCart />
       ) : (
         <CartList
+          totalPrice={totalPrice}
           cartItems={cartItems}
           removeCartItem={removeCartItem}
           setIsModalOpen={setIsModalOpen}
@@ -50,16 +53,13 @@ function CartList({
   cartItems,
   removeCartItem,
   setIsModalOpen,
+  totalPrice,
 }: {
   cartItems: CartItem[];
   removeCartItem: (id: number) => void;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  totalPrice: number;
 }) {
-  const totalPrice = cartItems.reduce((total, cartItem) => {
-    const item = fakeData.find((item) => item.id === cartItem.id);
-    return total + (item?.price || 0) * cartItem.quantity;
-  }, 0);
-
   return (
     <div>
       <ul className="flex flex-col">
@@ -102,11 +102,13 @@ function CartList({
   );
 }
 
-function CartItem({
-  id,
-  quantity,
-  removeCartItem,
-}: CartItem & { removeCartItem: (id: number) => void }) {
+interface CartItemProps {
+  id: number;
+  quantity: number;
+  removeCartItem: (id: number) => void;
+}
+
+function CartItem({ id, quantity, removeCartItem }: CartItemProps) {
   const item = fakeData.find((item) => item.id === id);
 
   if (item == null) {
