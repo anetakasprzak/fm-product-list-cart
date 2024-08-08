@@ -9,7 +9,7 @@ export type CartItem = { id: number; quantity: number };
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   console.log(isModalOpen);
 
