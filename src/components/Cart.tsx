@@ -5,10 +5,12 @@ function Cart({
   cartItems,
   cartQuantity,
   removeCartItem,
+  setIsModalOpen,
 }: {
   cartItems: CartItem[];
   cartQuantity: number;
   removeCartItem: (id: number) => void;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
     <div className="flex flex-col shrink-0 w-[38.4rem] h-max bg-white p-[2.4rem] rounded-[1.2rem] lg:w-[100%]">
@@ -19,7 +21,11 @@ function Cart({
       {!cartItems.length ? (
         <EmptyCart />
       ) : (
-        <CartList cartItems={cartItems} removeCartItem={removeCartItem} />
+        <CartList
+          cartItems={cartItems}
+          removeCartItem={removeCartItem}
+          setIsModalOpen={setIsModalOpen}
+        />
       )}
     </div>
   );
@@ -43,9 +49,11 @@ function EmptyCart() {
 function CartList({
   cartItems,
   removeCartItem,
+  setIsModalOpen,
 }: {
   cartItems: CartItem[];
   removeCartItem: (id: number) => void;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const totalPrice = cartItems.reduce((total, cartItem) => {
     const item = fakeData.find((item) => item.id === cartItem.id);
@@ -83,7 +91,10 @@ function CartList({
             This is <span className="font-[600]">carbon-neutral</span> delivery
           </p>
         </div>
-        <button className="bg-[#C73B0F] text-[#fff] text-[1.6rem] font-[600] w-[100%] rounded-full py-[1.6rem] hover:bg-[#a22e0b] transition-all duration-200">
+        <button
+          className="bg-[#C73B0F] text-[#fff] text-[1.6rem] font-[600] w-[100%] rounded-full py-[1.6rem] hover:bg-[#a22e0b] transition-all duration-200"
+          onClick={() => setIsModalOpen(true)}
+        >
           Confirm Order
         </button>
       </div>

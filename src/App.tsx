@@ -9,6 +9,10 @@ export type CartItem = { id: number; quantity: number };
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  console.log(isModalOpen);
+
   const getItemQuantity = (id: number) =>
     cartItems.find((item) => item.id === id)?.quantity || 0;
 
@@ -83,9 +87,10 @@ function App() {
           cartItems={cartItems}
           cartQuantity={cartQuantity}
           removeCartItem={removeCartItem}
+          setIsModalOpen={setIsModalOpen}
         />
       </div>
-      <Modal />
+      {isModalOpen && <Modal />}
     </div>
   );
 }

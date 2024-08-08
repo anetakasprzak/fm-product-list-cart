@@ -18,7 +18,7 @@ function Modal() {
       </div>
 
       {/* OVERLAY */}
-      <div className="absolute bg-slate-500 top-0 left-0 w-[100vw] h-[100%] opacity-50 z-0"></div>
+      <div className="fixed w-full h-full bg-slate-500 top-0 left-0 opacity-50 z-0"></div>
     </div>
   );
 }
