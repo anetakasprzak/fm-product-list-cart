@@ -93,7 +93,10 @@ function CartList({
         </div>
         <button
           className="bg-[#C73B0F] text-[#fff] text-[1.6rem] font-[600] w-[100%] rounded-full py-[1.6rem] hover:bg-[#a22e0b] transition-all duration-200"
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => {
+            setIsModalOpen(true);
+            // globalThis.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          }}
         >
           Confirm Order
         </button>
