@@ -10,14 +10,14 @@ interface ModalProps {
 function Modal({ cartItems, cleanCartItems, totalPrice }: ModalProps) {
   return (
     <div>
-      <div className="absolute h-[auto] w-[60rem] bg-white top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] z-10 p-[4rem] flex flex-col gap-[2.4rem]">
+      <div className="rounded-[1.2rem] absolute h-[auto] w-[60rem] bg-white top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] z-10 p-[4rem] flex flex-col gap-[2.4rem] md:w-[44rem] md:p-[3.2rem] xsm:p-[2rem] xsm:w-[36rem]">
         <img
           src="../../public/assets/images/icon-order-confirmed.svg"
           alt="icon order confirmed"
           className="w-[4.8rem]"
         />
         <div>
-          <h2 className="text-[4rem] font-[700] text-[#260F08]">
+          <h2 className="text-[4rem] font-[700] text-[#260F08] md:text-[3.4rem]">
             Order Confirmed
           </h2>
           <p className="text-[1.6rem] font-[400] text-[#87635A]">
@@ -25,7 +25,7 @@ function Modal({ cartItems, cleanCartItems, totalPrice }: ModalProps) {
           </p>
         </div>
 
-        <ul className="bg-[#FCF8F6] px-[2.4rem] pb-[2.4rem] rounded-[0.8rem]">
+        <ul className="bg-[#FCF8F6] px-[2.4rem] pb-[2.4rem] rounded-[0.8rem] md:px-[2rem]">
           {cartItems.map((item) => {
             return (
               <ModalCartItem
@@ -46,7 +46,7 @@ function Modal({ cartItems, cleanCartItems, totalPrice }: ModalProps) {
           </div>
         </ul>
         <button
-          className="w-[100%] bg-[#C73B0F] py-[1.6rem] text-white rounded-full"
+          className="w-[100%] bg-[#C73B0F] py-[1.6rem] text-white rounded-full hover:bg-[#a22e0b] transition-all duration-200"
           onClick={cleanCartItems}
         >
           Start New Order
