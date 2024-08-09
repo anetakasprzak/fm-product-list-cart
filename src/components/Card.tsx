@@ -37,7 +37,7 @@ function Card({
               onClick={() => increaseCartQuantity(item.id)}
             >
               <img
-                src="../../public/assets/images/icon-add-to-cart.svg"
+                src="/assets/images/icon-add-to-cart.svg"
                 alt="add to cart icon"
               />
               <p>Add to cart</p>

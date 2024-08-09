@@ -12,7 +12,7 @@ function Modal({ cartItems, cleanCartItems, totalPrice }: ModalProps) {
     <div>
       <div className="rounded-[1.2rem] absolute h-[auto] w-[60rem] bg-white top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] z-10 p-[4rem] flex flex-col gap-[2.4rem] md:w-[44rem] md:p-[3.2rem] xsm:p-[2rem] xsm:w-[36rem]">
         <img
-          src="../../public/assets/images/icon-order-confirmed.svg"
+          src="/assets/images/icon-order-confirmed.svg"
           alt="icon order confirmed"
           className="w-[4.8rem]"
         />

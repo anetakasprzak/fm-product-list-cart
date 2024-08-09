@@ -1,7 +1,7 @@
 import Cart from "./components/Cart";
 import Card from "./components/Card";
 import { fakeData } from "./data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./components/Modal";
 
 export type CartItem = { id: number; quantity: number };
@@ -71,6 +71,14 @@ function App() {
     setCartItems([]);
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isModalOpen]);
 
   return (
     <div className="bg-[#FCF8F6] p-[8.8rem] lg:py-[7rem] lg:px-[6rem] xsm:py-[5rem] xsm:px-[2rem]">

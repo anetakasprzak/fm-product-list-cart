@@ -38,7 +38,7 @@ function EmptyCart() {
   return (
     <div className="flex flex-col items-center py-3">
       <img
-        src="../../public/assets/images/illustration-empty-cart.svg"
+        src="/assets/images/illustration-empty-cart.svg"
         alt="empty cart image"
         className="h-[12.8rem] mb-[1.5rem]"
       />
@@ -86,7 +86,7 @@ function CartList({
         </div>
 
         <div className="flex gap-2 justify-center items-center bg-[#FCF8F6] rounded-[0.8rem] py-[1.6rem] ">
-          <img src="../../public/assets/images/icon-carbon-neutral.svg" />
+          <img src="/assets/images/icon-carbon-neutral.svg" />
           <p className="text-[#260F08] text-[1.4rem] font-[400]">
             This is <span className="font-[600]">carbon-neutral</span> delivery
           </p>
@@ -95,7 +95,7 @@ function CartList({
           className="bg-[#C73B0F] text-[#fff] text-[1.6rem] font-[600] w-[100%] rounded-full py-[1.6rem] hover:bg-[#a22e0b] transition-all duration-200"
           onClick={() => {
             setIsModalOpen(true);
-            // globalThis.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            globalThis.scrollTo({ top: 0, left: 0, behavior: "smooth" });
           }}
         >
           Confirm Order
@@ -136,7 +136,7 @@ function CartItem({ id, quantity, removeCartItem }: CartItemProps) {
       </div>
       <button className="" onClick={() => removeCartItem(id)}>
         <div className="border border-[#87635A] rounded-full p-[0.3rem]">
-          <img src="../../public/assets/images/icon-remove-item.svg" />
+          <img src="/assets/images/icon-remove-item.svg" />
         </div>
       </button>
     </div>
